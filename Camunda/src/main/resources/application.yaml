@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: camunda
+  datasource:
+    url: jdbc:h2:file:./camunda-h2-database
+
+camunda:
+  bpm:
+    admin-user:
+      id: demo
+      password: demo
+    filter:
+      create: All tasks
+
+server:
+  port: 8080
+
+
+#feign.name
+feign.name: ${CAMUNDA_SERVICE_NAME:registration}
+#feign.url=camunda
+feign.url: ${CAMUNDA_SERVICE_URL:http://localhost:8081}

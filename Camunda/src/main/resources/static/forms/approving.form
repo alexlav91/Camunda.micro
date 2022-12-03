@@ -1,0 +1,37 @@
+{
+  "components": [
+    {
+      "label": "ID пользователя",
+      "type": "number",
+      "id": "Field_148rncr",
+      "key": "userId",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Имя пользователя",
+      "type": "textfield",
+      "id": "Field_0srab3e",
+      "key": "username",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Подтвердить регистрацию",
+      "type": "checkbox",
+      "id": "Field_1nzt2aj",
+      "key": "decision"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1jqz6a9",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.5.1"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 5
+}

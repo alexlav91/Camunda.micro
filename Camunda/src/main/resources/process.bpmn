@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0fr9mxs" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.5.1">
+  <bpmn:process id="TestRegistration-process" isExecutable="true">
+    <bpmn:endEvent id="EndEvent_0x6ir2l">
+      <bpmn:incoming>Flow_081n6oy</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="registration" name="Утвердить/отклонить регистрацию" camunda:formKey="camunda-forms:/forms/approving.form" camunda:candidateUsers="demo">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_0vgg9ww</bpmn:incoming>
+      <bpmn:outgoing>Flow_14pzg6o</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0vgg9ww" sourceRef="StartEvent_1" targetRef="registration" />
+    <bpmn:sequenceFlow id="Flow_14pzg6o" sourceRef="registration" targetRef="Gateway_1h0onid" />
+    <bpmn:exclusiveGateway id="Gateway_1h0onid">
+      <bpmn:incoming>Flow_14pzg6o</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n0v86v</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0su860s</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0n0v86v" name="decision==false" sourceRef="Gateway_1h0onid" targetRef="Activity_13t16jc">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${decision==false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_081n6oy" sourceRef="Activity_13t16jc" targetRef="EndEvent_0x6ir2l" />
+    <bpmn:sequenceFlow id="Flow_0su860s" name="decision==true" sourceRef="Gateway_1h0onid" targetRef="Activity_0kxvbuy">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${decision==true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_16xcddn" sourceRef="Activity_0kxvbuy" targetRef="Activity_13t16jc" />
+    <bpmn:serviceTask id="Activity_0kxvbuy" name="Создание нового пользователя" camunda:delegateExpression="#{approveRegistration}">
+      <bpmn:incoming>Flow_0su860s</bpmn:incoming>
+      <bpmn:outgoing>Flow_16xcddn</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_13t16jc" name="Отправить уведомление" camunda:delegateExpression="${notifyUser}">
+      <bpmn:incoming>Flow_0n0v86v</bpmn:incoming>
+      <bpmn:incoming>Flow_16xcddn</bpmn:incoming>
+      <bpmn:outgoing>Flow_081n6oy</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_1" name="UserRegistered">
+      <bpmn:extensionElements>
+        <camunda:formData businessKey="">
+          <camunda:formField id="username" label="username" type="string" />
+          <camunda:formField id="userId" label="userId" type="long" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0vgg9ww</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_05octn7" messageRef="Message_3kcpn1r" />
+    </bpmn:startEvent>
+  </bpmn:process>
+  <bpmn:signal id="Signal_0anf9dq" name="Signal_0anf9dq" />
+  <bpmn:message id="Message_3kcpn1r" name="UserRegistered" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TestRegistration-process">
+      <bpmndi:BPMNShape id="EndEvent_0x6ir2l_di" bpmnElement="EndEvent_0x6ir2l">
+        <dc:Bounds x="1272" y="339" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1h0onid_di" bpmnElement="Gateway_1h0onid" isMarkerVisible="true">
+        <dc:Bounds x="755" y="332" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ms490v_di" bpmnElement="Activity_0kxvbuy">
+        <dc:Bounds x="890" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ov97f0_di" bpmnElement="Activity_13t16jc">
+        <dc:Bounds x="1100" y="317" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_02oihvc_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="172" y="339" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="152" y="382" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_08mft2c_di" bpmnElement="registration">
+        <dc:Bounds x="480" y="317" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0vgg9ww_di" bpmnElement="Flow_0vgg9ww">
+        <di:waypoint x="208" y="357" />
+        <di:waypoint x="480" y="357" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14pzg6o_di" bpmnElement="Flow_14pzg6o">
+        <di:waypoint x="580" y="357" />
+        <di:waypoint x="755" y="357" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n0v86v_di" bpmnElement="Flow_0n0v86v">
+        <di:waypoint x="805" y="357" />
+        <di:waypoint x="1100" y="357" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="915" y="339" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_081n6oy_di" bpmnElement="Flow_081n6oy">
+        <di:waypoint x="1200" y="357" />
+        <di:waypoint x="1272" y="357" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0su860s_di" bpmnElement="Flow_0su860s">
+        <di:waypoint x="780" y="332" />
+        <di:waypoint x="780" y="120" />
+        <di:waypoint x="890" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="777" y="103" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16xcddn_di" bpmnElement="Flow_16xcddn">
+        <di:waypoint x="940" y="160" />
+        <di:waypoint x="940" y="340" />
+        <di:waypoint x="1100" y="340" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
