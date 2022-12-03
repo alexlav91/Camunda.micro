@@ -12,7 +12,6 @@
 <div class="container">
     <h1>New User</h1>
     <hr>
-    <h2> Save Client</h2>
     <form action="#" th:action="@{/save}" th:object="${user}" method="POST">
         <input type="text" th:field="*{fullName}"
                placeholder="User Name" class="form-control mb-4 col-4">
