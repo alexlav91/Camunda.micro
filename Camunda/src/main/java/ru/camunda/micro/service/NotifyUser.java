@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class NotifyUser implements JavaDelegate {
 
-    private final String HELLO_MESSAGE = "%s, добро пожаловать на портал!";
+    private final String HELLO_MESSAGE = "%s, Welcome!";
 
-    private final String REJECT_MESSAGE = "%s, Вам отказано в доступе";
+    private final String REJECT_MESSAGE = "%s, You have been denied access";
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {

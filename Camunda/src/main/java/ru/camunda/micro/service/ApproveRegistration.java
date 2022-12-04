@@ -14,7 +14,7 @@ public class ApproveRegistration implements JavaDelegate {
 
     private final RegistrationSender registrationSender;
 
-    private final String SUCCESS_REGISTRATION_MESSAGE = "[%s] Пользователь %s успешно зарегистрирован";
+    private final String SUCCESS_REGISTRATION_MESSAGE = "[%s] User %s has been successfully registered";
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
