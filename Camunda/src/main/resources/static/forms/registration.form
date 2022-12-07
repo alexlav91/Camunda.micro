@@ -1,0 +1,25 @@
+{
+  "components": [
+    {
+      "label": "Введите И.Ф.О.",
+      "type": "textfield",
+      "id": "Field_0dz77un",
+      "key": "field_1x8205o"
+    },
+    {
+      "label": "Number",
+      "type": "number",
+      "id": "Field_13ib53b",
+      "key": "field_18knhsb"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0vg8niv",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.1.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.5.1"
+  },
+  "schemaVersion": 5
+}

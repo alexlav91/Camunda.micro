@@ -1,4 +1,4 @@
-package ru.camunda.micro.controller.feign;
+package ru.camunda.micro.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
