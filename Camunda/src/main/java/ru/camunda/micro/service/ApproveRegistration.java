@@ -6,7 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
-import ru.camunda.micro.controller.feign.RegistrationSender;
+import ru.camunda.micro.feign.RegistrationSender;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor

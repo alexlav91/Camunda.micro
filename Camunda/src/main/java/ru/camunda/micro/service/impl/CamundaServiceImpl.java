@@ -13,7 +13,7 @@ public class CamundaServiceImpl implements CamundaService {
 
     public void startEvent(UserResponse userResponse) {
 
-        runtimeService.createMessageCorrelation("UserRegistered")
+        runtimeService.createMessageCorrelation("UserApproving")
                 .setVariable("username", userResponse.getFullName())
                 .setVariable("userId", userResponse.getId())
                 .correlate();
