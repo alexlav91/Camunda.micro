@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>ru.camunda.micro</groupId>
+    <groupId>ru.camunda.registration</groupId>
     <artifactId>Registration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Registration</name>
