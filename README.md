@@ -90,7 +90,9 @@ Camunda.micro - приложение для регистрации пользо�
    spring.application.name= registration
    server.port=8081
    ```
-- Отрыть консоль, зайти в папку проекта (например, Camunda.micro-main) и ввести команду mvn compile   
+- Отрыть консоль, зайти в папку проекта (например, Camunda.micro-main) и ввести команду mvn clean install
+- Ввести команду mvn exec:java -Dexec.mainClass=ru.camunda.micro.Application для запуска Camunda 
+- Ввести команду mvn exec:java -Dexec.mainClass=ru.camunda.registration.RegistrationApplication для запуска сервиса для регистрации
    
 
 
