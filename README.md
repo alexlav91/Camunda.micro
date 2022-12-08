@@ -95,7 +95,7 @@ Camunda.micro - приложение для регистрации пользо�
 2. Ввести команду mvn exec:java -Dexec.mainClass=ru.camunda.micro.Application 
 - Запуск сервиса регистрации:
 1. Отрыть консоль, зайти в папку приложения (например,cd e:/Camunda.micro-main/REgistration) и ввести команду mvn clean install
-2. Ввести команду mvn exec:java -Dexec.mainClass=ru.camunda.registration.RegistrationApplication для запуска сервиса для регистрации
+2. Ввести команду mvn exec:java -Dexec.mainClass=ru.camunda.registration.RegistrationApplication 
    
 
 
